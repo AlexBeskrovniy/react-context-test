@@ -1,9 +1,8 @@
-import { useContext } from 'react';
-import { CountContext } from './CountContext';
+import { useCounter } from './CountContext';
 
 const Counter = () => {
 
-    const { count } = useContext(CountContext);
+    const { count } = useCounter();
 
     return(
         <span className="fs-1">

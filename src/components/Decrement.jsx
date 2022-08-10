@@ -1,10 +1,9 @@
 import { Button } from 'react-bootstrap';
-import { useContext } from 'react';
-import { CountContext } from './CountContext';
+import { useCounter } from './CountContext';
 
 const Decrement = () => {
 
-    const { dec } = useContext(CountContext);
+    const { dec } = useCounter();
 
     return(
         <Button

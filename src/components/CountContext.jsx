@@ -1,6 +1,10 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 
-export const CountContext = React.createContext();
+const CountContext = React.createContext();
+
+export const useCounter = () => {
+    return useContext(CountContext);
+}
 
 export const CountProvider = ({children}) => {
 

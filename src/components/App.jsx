@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from "./Navbar";
 import Main from "./Main";
 import Records from "./Records";
+import { DataContext } from './DataContext';
+import { CountProvider } from './CountContext';
 
 const fetchData = async () => {
     try {
@@ -16,20 +18,20 @@ const fetchData = async () => {
 
 const data = await fetchData();
 
-export const DataContext = React.createContext(data);
-
 const App = () => {
 
     return (
-        <DataContext.Provider value={data}>
-            <BrowserRouter>
-                <Navbar />
-                <Routes>
-                    <Route path="/" element={<Main />} />
-                    <Route path="/records" element={<Records />} />
-                </Routes>
-            </BrowserRouter>
-        </DataContext.Provider>
+        <CountProvider>
+            <DataContext.Provider value={data}>
+                <BrowserRouter>
+                    <Navbar />
+                    <Routes>
+                        <Route path="/" element={<Main />} />
+                        <Route path="/records" element={<Records />} />
+                    </Routes>
+                </BrowserRouter>
+            </DataContext.Provider>
+        </CountProvider>
     );
 }
 
